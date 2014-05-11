@@ -1,0 +1,16 @@
+extends ../shared/template
+
+block content
+  h1 Add New Song
+
+  form(method='POST', action='/songs', enctype='multipart/form-data')
+    input(type='text', name='name', placeholder='New Song')
+    select(name='artistName')
+      each artist in artists
+        option= artist.name
+    select(name='albumName')
+      each album in albums
+        option= album.name
+    input(name='audio', type='file')
+    input(name='genreName', type='text', placeholder='genre1, genre2, genre3')
+    button Add Song

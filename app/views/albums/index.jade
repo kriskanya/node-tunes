@@ -1,0 +1,7 @@
+extends ../shared/template
+
+block content
+  h1 Albums: Index
+  each album in albums
+    h3= album.name
+    h3= album.coverArt

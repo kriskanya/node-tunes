@@ -1,0 +1,7 @@
+extends ../shared/template
+
+block content
+  h1 Artists: Index
+  each artist in artists
+    h3= artist.name
+    h3= artist.photo

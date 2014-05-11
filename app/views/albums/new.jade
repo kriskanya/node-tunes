@@ -1,0 +1,9 @@
+extends ../shared/template
+
+block content
+  h1 Create New Album
+
+  form(method='POST', action='/albums', enctype='multipart/form-data')
+    input(type='text', name='name', placeholder="Album Name")
+    input(type='file', name='coverArt')
+    button Add Album
