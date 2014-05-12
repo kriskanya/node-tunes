@@ -2,6 +2,7 @@ extends ../shared/template
 
 block content
   h1 Artists: Index
-  each artist in artists
-    h3= artist.name
-    h3= artist.photo
+  .artistsDiv
+    each artist in artists
+      a(href='/artists/#{artist.name}')
+        img(src='../img/#{artist.name}/#{artist.photo}')

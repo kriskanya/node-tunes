@@ -3,12 +3,15 @@ extends ../shared/template
 block content
   h1 Songs: Index
 
-  This page should show artist, album, and songs in that album
-
   .music
     each song in songs
-      h3= song.artistName
-      h3= song.albumName
-      audio(src='#{song.file}', type='audio/mp3', controls=true)
-      img(src='/img/#{song.artistName}/#{song.albumName}/#{song.albumPhoto}')
-      img(src='/img/#{song.artistName}/#{song.albumName}/#{song.artistPhoto}')
+      .songName
+        h3 Song: #{song.name}
+      .albumPhoto
+        h3= song.albumName
+        img(src='/img/#{song.artistName}/#{song.albumName}/#{song.albumPhoto}')
+      .artistPhoto
+        h3= song.artistName
+        img(src='/img/#{song.artistName}/#{song.artistPhoto}')
+      .song
+        audio(src='#{song.file}', type='audio/mp3', controls=true)

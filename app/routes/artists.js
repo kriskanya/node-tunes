@@ -1,14 +1,26 @@
 'use strict';
 
 var artists = global.nss.db.collection('artists');
+var albums = global.nss.db.collection('albums');
+var songs = global.nss.db.collection('songs');
 var multiparty = require('multiparty');
 var fs = require('fs');  //imports the fs module (this is built into node)
 
 exports.index = (req, res)=>{
   artists.find().toArray((e, r)=>{
-    res.render('artists/index', {artists: r, title: 'artists: Index'});
+    albums.find().toArray((e, r2)=>{
+      res.render('artists/index', {artists: r, title: 'artists: Index'});
+    });
   });
 };
+
+// exports.index = (req, res)=>{
+//   albums.find().toArray((e, r)=>{
+//     artists.find().toArray((e, r2)=>{
+//       res.render('albums/index', {albums: r, artists: r2, title: 'albums: Index'});
+//     });
+//   });
+// };
 
 exports.new = (req, res)=>{
   res.render('artists/new', {title: 'artists: New'});
@@ -37,4 +49,12 @@ exports.create = (req, res)=>{
     }
   });
 
+};
+
+exports.show = (req, res)=>{
+
+  var name1 = req.params.name;
+  songs.find({artistName: name1}).toArray((error, records)=>{
+    res.render('artists/show', {songs: records, title: 'Show: Albums'});
+  });
 };

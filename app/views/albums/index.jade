@@ -2,6 +2,8 @@ extends ../shared/template
 
 block content
   h1 Albums: Index
-  each album in albums
-    h3= album.name
-    h3= album.coverArt
+  .albumsDiv
+    each album in albums
+      each artist in artists
+        a(href='/albums/#{album.name}')
+          img(src='../img/#{artist.name}/#{album.name}/#{album.photo}')

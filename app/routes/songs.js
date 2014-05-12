@@ -51,9 +51,7 @@ exports.create = (req, res)=>{
   albums.find({name: `${albumName}`}).toArray((error, albumData)=>{
     artists.find({name: `${artistName}`}).toArray((error, artistData)=>{
 
-      console.log(albumData[0]);
-
-      song.albumPhoto = albumData[0].coverArt;
+      song.albumPhoto = albumData[0].photo;
       song.artistPhoto = artistData[0].photo;
       song.name     = name;
       song.genres   = genres;
@@ -76,7 +74,6 @@ exports.create = (req, res)=>{
         fs.mkdirSync(albDir);
       }
       fs.renameSync(oldPathAbs, newPathAbs);  // newPathAbs = `${__dirname}/../static/audios/${artistName}/${albumName}/${normalized}${extension}`
-
 
       songs.save(song, ()=>res.redirect('/songs'));
       });

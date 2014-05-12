@@ -5,5 +5,8 @@ block content
 
   form(method='POST', action='/albums', enctype='multipart/form-data')
     input(type='text', name='name', placeholder="Album Name")
+    select(name='artist')
+      each artist in artists
+        option= artist.name
     input(type='file', name='coverArt')
     button Add Album

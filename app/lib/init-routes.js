@@ -22,11 +22,13 @@ function load(app, fn){
   app.get('/', dbg, home.index);
   app.get('/help', dbg, home.help);
   app.get('/albums', dbg, albums.index);
+  app.get('/albums/:name', dbg, albums.show);
   app.get('/albums/new', dbg, albums.new);
   app.post('/albums', dbg, albums.create);
 
   app.get('/artists', dbg, artists.index);
   app.get('/artists/new', dbg, artists.new);
+  app.get('/artists/:name', dbg, artists.show);
   app.post('/artists', dbg, artists.create);
 
   app.get('/songs', dbg, songs.index);
